@@ -85,9 +85,9 @@
                                 <ul class="nav navbar-nav">
                                     <li><a href="DangNhapServlet?command=logout"><i class="fa fa-user"></i> <%=session.getAttribute("tenDangNhap")%></a></li>
                                     <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                    <li><a href="account.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                    <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Thanh Toán</a></li>
+                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                    <li><a href="account.jsp"><i class="fa fa-lock"></i> Đăng nhập/Đăng ký</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -55,7 +55,7 @@
                                 <div class="productinfo text-center">
                                     <img src="${o.hinhAnh}" alt="" />
                                     <h2>${o.donGia} $</h2>
-                                    <p>${o.tenSanPham}</p>
+                                    <p>${o.tenSanPham}</p>                                    
                                     <a href="GioHangServlet?command=insert&maSanPham=${o.maSanPham}&cartID=${System.currentTimeMillis()}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="product-overlay">

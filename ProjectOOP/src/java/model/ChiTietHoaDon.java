@@ -9,7 +9,7 @@ package model;
  * @author SAD
  */
 public class ChiTietHoaDon {
-    private String maHoaDon;
+    private int maChiTietHoaDon;
     private HoaDon hoaDon;
     private SanPham sanPham;
     private  int soLuong;
@@ -19,8 +19,9 @@ public class ChiTietHoaDon {
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(String maHoaDon, HoaDon hoaDon, SanPham sanPham, int soLuong, double donGia, int giamGia) {
-        this.maHoaDon = maHoaDon;
+    public ChiTietHoaDon(int maChiTietHoaDon, HoaDon hoaDon, SanPham sanPham, int soLuong, double donGia, int giamGia) {
+        this.maChiTietHoaDon = maChiTietHoaDon;
+       
         this.hoaDon = hoaDon;
         this.sanPham = sanPham;
         this.soLuong = soLuong;
@@ -28,13 +29,14 @@ public class ChiTietHoaDon {
         this.giamGia = giamGia;
     }
 
-    public String getMaHoaDon() {
-        return maHoaDon;
+    public int getMaChiTietHoaDon() {
+        return maChiTietHoaDon;
     }
 
-    public void setMaHoaDon(String maHoaDon) {
-        this.maHoaDon = maHoaDon;
+    public void setMaChiTietHoaDon(int maChiTietHoaDon) {
+        this.maChiTietHoaDon = maChiTietHoaDon;
     }
+
 
     public HoaDon getHoaDon() {
         return hoaDon;

@@ -1,6 +1,13 @@
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language ="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.TreeMap"%>
+<%@page import ="model.SanPham"%>
+<%@page import ="model.GioHang"%>
+<%@page import ="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,89 +28,28 @@
         <script src="js/main.js"></script>
     </head>
     <body>
+        <% 
+            if (session.getAttribute("tenDangNhap")==null){
+            response.sendRedirect("/Web1/account.jsp");
+            }
+            else {
+             GioHang cart = (GioHang) session.getAttribute("cart");
+            if (cart == null) {
+                cart = new GioHang();
+                session.setAttribute("cart",cart);
+            }
+            TreeMap<SanPham,Integer> list = cart.getList();
+            //NumberFormat nf = NumberFormat.getInstance();
+            //nf.setMinimumIntegerDigits(0);
+        
+        %>
+
         <jsp:include page="header.jsp"></jsp:include>
             <section id="cart_items">
                 <div class="container">
-                    
 
-                   
-
-                    
-
-                    <div class="shopper-informations">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="shopper-info">
-                                    <p>Thông tin thanh toán</p>
-                                    <form>
-                                        <input type="text" placeholder="Display Name">
-                                        <input type="text" placeholder="User Name">
-                                        <input type="password" placeholder="Password">
-                                        <input type="submit" value="Xác nhận thanh tooán">
-                                    </form>
-                                    <a class="btn btn-primary" href="">Get Quotes</a>
-                                    <a class="btn btn-primary" href="">Continue</a>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 clearfix">
-                                <div class="bill-to">
-                                    <p>Bill To</p>
-                                    <div class="form-one">
-                                        <form>
-                                            <input type="text" placeholder="Company Name">
-                                            <input type="text" placeholder="Email*">
-                                            <input type="text" placeholder="Title">
-                                            <input type="text" placeholder="First Name *">
-                                            <input type="text" placeholder="Middle Name">
-                                            <input type="text" placeholder="Last Name *">
-                                            <input type="text" placeholder="Address 1 *">
-                                            <input type="text" placeholder="Address 2">
-                                        </form>
-                                    </div>
-                                    <div class="form-two">
-                                        <form>
-                                            <input type="text" placeholder="Zip / Postal Code *">
-                                            <select>
-                                                <option>-- Country --</option>
-                                                <option>United States</option>
-                                                <option>Bangladesh</option>
-                                                <option>UK</option>
-                                                <option>India</option>
-                                                <option>Pakistan</option>
-                                                <option>Ucrane</option>
-                                                <option>Canada</option>
-                                                <option>Dubai</option>
-                                            </select>
-                                            <select>
-                                                <option>-- State / Province / Region --</option>
-                                                <option>United States</option>
-                                                <option>Bangladesh</option>
-                                                <option>UK</option>
-                                                <option>India</option>
-                                                <option>Pakistan</option>
-                                                <option>Ucrane</option>
-                                                <option>Canada</option>
-                                                <option>Dubai</option>
-                                            </select>
-                                            <input type="password" placeholder="Confirm password">
-                                            <input type="text" placeholder="Phone *">
-                                            <input type="text" placeholder="Mobile Phone">
-                                            <input type="text" placeholder="Fax">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="order-message">
-                                    <p>Shipping Order</p>
-                                    <textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-                                    <label><input type="checkbox"> Shipping to bill address</label>
-                                </div>	
-                            </div>					
-                        </div>
-                    </div>
                     <div class="review-payment">
-                        <h2>Review & Payment</h2>
+                        <h2>Thông tin đơn hàng</h2>
                     </div>
 
                     <div class="table-responsive cart_info">
@@ -119,122 +65,97 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="cart_product">
-                                        <a href=""><img src="images/cart/one.png" alt=""></a>
-                                    </td>
-                                    <td class="cart_description">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="cart_price">
-                                        <p>$59</p>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                            <a class="cart_quantity_down" href=""> - </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">$59</p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
 
-                                <tr>
-                                    <td class="cart_product">
-                                        <a href=""><img src="images/cart/two.png" alt=""></a>
-                                    </td>
-                                    <td class="cart_description">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="cart_price">
-                                        <p>$59</p>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                            <a class="cart_quantity_down" href=""> - </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">$59</p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="cart_product">
-                                        <a href=""><img src="images/cart/three.png" alt=""></a>
-                                    </td>
-                                    <td class="cart_description">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="cart_price">
-                                        <p>$59</p>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                            <a class="cart_quantity_down" href=""> - </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">$59</p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4">&nbsp;</td>
-                                    <td colspan="2">
-                                        <table class="table table-condensed total-result">
-                                            <tr>
-                                                <td>Cart Sub Total</td>
-                                                <td>$59</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Exo Tax</td>
-                                                <td>$2</td>
-                                            </tr>
-                                            <tr class="shipping-cost">
-                                                <td>Shipping Cost</td>
-                                                <td>Free</td>										
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                <td><span>$61</span></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="payment-options">
-                        <span>
-                            <label><input type="checkbox"> Direct Bank Transfer</label>
-                        </span>
-                        <span>
-                            <label><input type="checkbox"> Check Payment</label>
-                        </span>
-                        <span>
-                            <label><input type="checkbox"> Paypal</label>
-                        </span>
+                            <%
+                 for (Map.Entry<SanPham, Integer > ds : list.entrySet()){
+                                                
+                                                
+                            %>
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="<%=ds.getKey().getHinhAnh()%>" alt=""></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href=""><%=ds.getKey().getTenSanPham()%></a></h4>
+                                    <p>Mã sản phẩm: <%=ds.getKey().getMaSanPham()%></p>
+                                </td>
+                                <td class="cart_price">
+                                    <p><%=ds.getKey().getDonGia() %>$</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_up" href="GioHangServlet?command=plus&maSanPham=<%=ds.getKey().getMaSanPham()%>&cartID=<%=System.currentTimeMillis()%>"> + </a>
+                                        <input class="cart_quantity_input" type="text" value="<%=ds.getValue()%>" autocomplete="off" size="2" disabled="">
+                                        <a class="cart_quantity_down" href="GioHangServlet?command=sub&maSanPham=<%=ds.getKey().getMaSanPham()%>&cartID=<%=System.currentTimeMillis()%>"> - </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price"> <%=ds.getValue() * ds.getKey().getDonGia() %></p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href="GioHangServlet?command=remove&maSanPham=<%=ds.getKey().getMaSanPham()%>&cartID=<%=System.currentTimeMillis()%>"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+
+                            <%
+                                }
+                            %>
+
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                                <td colspan="2">
+                                    <table class="table table-condensed total-result">
+                                        <tr>
+                                            <td>Cart Sub Total</td>
+                                            <td>$59</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Exo Tax</td>
+                                            <td>$2</td>
+                                        </tr>
+                                        <tr class="shipping-cost">
+                                            <td>Shipping Cost</td>
+                                            <td>Free</td>										
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td><span>$61</span></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="shopper-informations">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="shopper-info">
+                                <p>Thông tin thanh toán</p>
+                                <form action="ThanhToanServlet" method ="post">
+                                    <p>Địa chỉ giao hàng</p>
+                                    <textarea name="diaChiGiaoHang"  placeholder="" rows="5"></textarea>
+                                    <p>Phương thức thanh toán</p>                    
+                                    <select name ="phuongThucThanhToan">
+                                        <option value ="Thanh toán khi giao hàng">Thanh toán khi giao hàng</option>
+                                        <option value="Chuyển khoản ngân hàng" >Chuyển khoản ngân hàng </option>
+                                    </select>
+                                    <input type ="hidden" value="<%=session.getAttribute("tenDangNhap")%>"/>
+                                    <input type="submit"  value="Xác nhận thanh toán" class="btn btn-primary">
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section> <!--/#cart_items-->
+
+            </div>
+        </section> <!--/#cart_items-->
         <jsp:include page="footer.jsp"></jsp:include> 
-        
+        <%
+            }
+        %>
     </body>
 </html>

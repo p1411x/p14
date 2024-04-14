@@ -41,6 +41,8 @@
                 session.setAttribute("cart", cart);
             }
             TreeMap<SanPham,Integer> list = cart.getList();
+            NumberFormat nf = NumberFormat.getInstance();
+            nf.setMinimumIntegerDigits(0);
         %>
         
         <jsp:include page="header.jsp"></jsp:include>
@@ -178,8 +180,8 @@
                                                 <li>Shipping Cost <span>Free</span></li>
                                                 <li>Total <span>$61</span></li>
                                             </ul>
-                                            <a class="btn btn-default update" href="">Update</a>
-                                            <a class="btn btn-default check_out" href="">Check Out</a>
+                                            <a class="btn btn-default update" href="">Hủy đơn hàng</a>
+                                            <a class="btn btn-default check_out" href="checkout.jsp">Thanh toán</a>
                                         </div>
                                     </div>
                                 </div>

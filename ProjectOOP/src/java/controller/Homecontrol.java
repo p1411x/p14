@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.DanhMuc;
+import model.GioHang;
 import model.SanPham;
 
 /**
@@ -42,13 +43,18 @@ public class Homecontrol extends HttpServlet {
             request.setAttribute("listD", listd);
             
             request.setAttribute("listDMC", dm1);
-        
-        
+               
         // b2 : set data to jsp
        
        request.setAttribute("listP", list);
+        HttpSession session = request.getSession();
+       GioHang cart  = (GioHang) session.getAttribute("cart");
+       if (cart==null){
+                cart= new GioHang();
+                session.setAttribute("cart",cart );
+            }
        request.getRequestDispatcher("index.jsp").forward(request, response);
-       
+      
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

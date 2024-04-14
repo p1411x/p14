@@ -39,10 +39,12 @@ public class DangNhapServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       request.setCharacterEncoding("utf-8");
+        
+        request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String tenDangNhap = request.getParameter("tenDangNhap");     
         String matKhau = request.getParameter("matKhau");
+        
         String err="";
         if(tenDangNhap.equals("") || matKhau.equals("") ){
             err = "Vui lòng đăng nhập đầy đủ thông tin";         

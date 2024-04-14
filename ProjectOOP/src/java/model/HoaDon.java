@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 /**
  *
@@ -15,18 +15,16 @@ public class HoaDon {
     private TaiKhoan taiKhoan;
     private String diaChiGiaoHang;
     private String phuongThucThanhToan;
-    private Timestamp ngayGiaoHang;
     private Timestamp ngayMuaHang;
-    private String tinhTrang;
+    private int tinhTrang;
     public HoaDon() {
     }
 
-    public HoaDon(String maHoaDon, TaiKhoan taiKhoan, String diaChiGiaoHang, String phuongThucThanhToan, Timestamp ngayGiaoHang, Timestamp ngayMuaHang) {
+    public HoaDon(String maHoaDon, TaiKhoan taiKhoan, String diaChiGiaoHang, String phuongThucThanhToan, Timestamp ngayMuaHang,int tinhTrang) {
         this.maHoaDon = maHoaDon;
         this.taiKhoan = taiKhoan;
         this.diaChiGiaoHang = diaChiGiaoHang;
         this.phuongThucThanhToan = phuongThucThanhToan;
-        this.ngayGiaoHang = ngayGiaoHang;
         this.ngayMuaHang = ngayMuaHang;
         this.tinhTrang = tinhTrang;
     }
@@ -43,11 +41,11 @@ public class HoaDon {
         return taiKhoan;
     }
 
-    public String getTinhTrang() {
+    public int getTinhTrang() {
         return tinhTrang;
     }
 
-    public void setTinhTrang(String tinhTrang) {
+    public void setTinhTrang(int tinhTrang) {
         this.tinhTrang = tinhTrang;
     }
 
@@ -69,14 +67,6 @@ public class HoaDon {
 
     public void setPhuongThucThanhToan(String phuongThucThanhToan) {
         this.phuongThucThanhToan = phuongThucThanhToan;
-    }
-
-    public Timestamp getNgayGiaoHang() {
-        return ngayGiaoHang;
-    }
-
-    public void setNgayGiaoHang(Timestamp ngayGiaoHang) {
-        this.ngayGiaoHang = ngayGiaoHang;
     }
 
     public Timestamp getNgayMuaHang() {
